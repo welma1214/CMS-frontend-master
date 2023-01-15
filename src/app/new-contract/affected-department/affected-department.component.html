@@ -1,0 +1,34 @@
+<div class="container " ng-app="" ngForm #myForm="ngForm" (ngSubmit)="submit(myForm)" novalidate>
+  <div fxLayout="column">
+    <div fxLayout="row">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/contract">{{'new-contract.title' | translate}}</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{'new-contract.affected-department.title' | translate}}</li>
+        </ol>
+      </nav>
+    </div>
+
+    <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start" fxLayout.sm="column" fxLayout.xs="column" >
+      
+      <div fxFlex="40" fxFlex.md="30">
+        <input type="text" class="form-control" placeholder="Ansprechperson" aria-label="name"
+        [value]=""
+        [ngModel]="" required name="personName"
+        >
+      </div>
+
+
+        <div fxFlex="40" fxFlex.md="30">
+          <ng-multiselect-dropdown
+          placeholder="{{'new-contract.affected-department.select-department' | translate}}"
+          [settings]="dropdownSettings"
+          [data]="dropdownList"
+          [(ngModel)]="selectedItems" required name="department"
+          (onSelect)="onItemSelect($event)"
+          (onSelectAll)="onSelectAll($event)"
+          (onDeSelect)="onItemRemove($event)"
+        >
+        </ng-multiselect-dropdown>
+        </div>
+    
